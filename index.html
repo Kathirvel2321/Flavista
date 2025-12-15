@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Flavista Home Page - Refined Hero</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600&display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <style type="text/tailwindcss">
+        @layer base {
+            :root {
+                --theme-primary: 255 69 0;--theme-secondary: 229 62 62;--theme-background-dark: 18 11 9;}
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "rgb(var(--theme-primary) / <alpha-value>)",
+                        "secondary": "rgb(var(--theme-secondary) / <alpha-value>)",
+                        "background-light": "#FDFBF7",
+                        "background-dark": "rgb(var(--theme-background-dark) / <alpha-value>)",
+                        "surface-dark": "#1A110E",
+                        "text-light": "#1C1C1C",
+                        "text-dark": "#EAE0DC",
+                        "subtle-light": "#A0A0A0",
+                        "subtle-dark": "#6B6664"
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.75rem",
+                        "xl": "1rem",
+                        "2xl": "1.5rem",
+                        "3xl": "2rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'soft-glow-primary': '0 0 35px 0 rgb(var(--theme-primary) / 0.4)',
+                        'soft-glow-secondary': '0 0 25px 0 rgb(var(--theme-secondary) / 0.3)',
+                        'inner-glow': 'inset 0 2px 10px 0 rgba(255, 255, 255, 0.07)',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-delay-1': 'float 6s 1s ease-in-out infinite',
+                        'float-delay-2': 'float 6s 2s ease-in-out infinite',
+                        'subtle-pulse': 'subtle-pulse 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        },
+                        'subtle-pulse': {
+                            '0%, 100%': { boxShadow: '0 0 35px 0 rgb(var(--theme-primary) / 0.4)' },
+                            '50%': { boxShadow: '0 0 45px 5px rgb(var(--theme-primary) / 0.45)' },
+                        }
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 300,
+                'GRAD' 0,
+                'opsz' 24
+        }
+
+        .text-gradient {
+            background: linear-gradient(90deg, rgb(var(--theme-primary)), oklch(75% 0.15 25));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .dark .text-gradient-dark {
+            background: linear-gradient(90deg, oklch(75% 0.15 25), oklch(80% 0.18 45));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark antialiased transition-colors duration-1000">
+    <div class="relative w-full flex flex-col overflow-x-hidden">
+        <header
+            class="sticky top-0 z-50 w-full bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-lg border-b border-white/10 dark:border-black/20">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between whitespace-nowrap py-4">
+                    <div class="flex items-center gap-3 text-text-light dark:text-white">
+                        <span class="material-symbols-outlined text-primary text-3xl">local_fire_department</span>
+                        <h2 class="text-2xl font-bold tracking-tight">Flavista</h2>
+                    </div>
+                    <nav class="hidden md:flex items-center gap-8">
+                        <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Home</a>
+                        <a class="text-sm font-medium text-slate-600 dark:text-subtle-dark hover:text-primary transition-colors"
+                            href="#">Restaurants</a>
+                        <a class="text-sm font-medium text-slate-600 dark:text-subtle-dark hover:text-primary transition-colors"
+                            href="#">Offers</a>
+                        <a class="text-sm font-medium text-slate-600 dark:text-subtle-dark hover:text-primary transition-colors"
+                            href="#">Help</a>
+                    </nav>
+                    <div class="flex items-center gap-4">
+                        <button
+                            class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-6 bg-primary text-white text-sm font-bold tracking-wide hover:opacity-90 transition-opacity shadow-soft-glow-primary">
+                            <span class="truncate">Log In</span>
+                        </button>
+                        <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/50"
+                            data-alt="User profile avatar placeholder"
+                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBGdxeYTkzH3IPhkqhUdW8Grnqbiy2_edbF-FEFTF-bq6Yvzh1v0ALrLLLOPlathXyS-SGi0FwnuJLpsserO1XBjvAeOQgllK9hDPyUWvw-OLxJU1msHKYGaB4AKpd0m_Uj4-mNXdhFuRYcZhgzR3aKlwGZsZ7CMF0oBiZeKwA8DnV_YK4OYQHYHtWR3vMwKJ3XLOD94YouXko91GhI4oQp4I28t5u1--P0J62AGMHekVGmZvm1NuHigMpgILtLwRihlI8pTQ0ztA");'>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main class="space-y-20 md:space-y-32">
+            <section class="relative">
+                <div class="absolute inset-0 w-full h-full -z-10 transition-opacity duration-1000 overflow-hidden">
+                    <img alt="Large, vibrant background image of a gourmet pizza"
+                        class="w-full h-full object-cover object-center animate-float-delay-2"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBR6vymGdV_lo7_PHeKZi5WuR2s9-pFst0LNHYAFrVBEcX14tmwADx7vKjpyHSDds62jCIRsBjrc9ygDKTKBL8BTcirkf4XVY44YbHtEo0fOOz4IPZvckWGPzF67koWwjQCHwJHp6-ZAHHJ11y-S2FaZ7Yt6a9OB6_LMlLxAuoaZPPz9fG7Ts9-gW2fDfEqS7ImVc9cQU-v3RXubhv7kW4gp7q1ATQvqY-t3Qyir75cFTDnAvexbJGs4oHq5c0To-V4ND4XihNTQ" />
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-background-dark/95 via-background-dark/60 to-transparent">
+                    </div>
+                    <div class="absolute inset-0 bg-primary/10 backdrop-blur-sm"></div>
+                </div>
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <div
+                        class="relative flex flex-col items-center justify-center min-h-[calc(100vh-80px)] text-center pt-10 pb-20">
+                        <div class="flex flex-col gap-6 items-center max-w-3xl z-10">
+                            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tighter !leading-tight text-white">
+                                <span class="text-gradient dark:text-gradient-dark">Taste</span> the Story of Every
+                                Flavor.
+                            </h1>
+                            <p class="text-base md:text-lg max-w-xl text-text-dark/80">Your next favorite meal is
+                                waiting. Let's find it together. Unforgettable food experiences, delivered.</p>
+                            <div class="w-full max-w-lg mt-6">
+                                <div class="relative">
+                                    <div
+                                        class="flex w-full items-stretch rounded-full h-16 md:h-20 bg-white/10 backdrop-blur-xl border-2 border-white/20 shadow-2xl shadow-black/30 ring-1 ring-white/20 hover:ring-primary/50 focus-within:ring-primary transition-all duration-300 shadow-inner-glow">
+                                        <div class="text-white/80 flex items-center justify-center pl-6 pr-2">
+                                            <span class="material-symbols-outlined text-3xl text-primary">search</span>
+                                        </div>
+                                        <input
+                                            class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden bg-transparent text-white focus:outline-0 focus:ring-0 border-0 h-full placeholder:text-subtle-dark px-4 text-lg md:text-xl font-medium"
+                                            placeholder="Dish, restaurant, or cuisine..." value="" />
+                                        <div class="flex items-center justify-center p-2.5">
+                                            <button
+                                                class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-full h-full px-10 bg-primary text-white text-base md:text-lg font-bold tracking-wide hover:opacity-90 transition-opacity shadow-soft-glow-primary animate-subtle-pulse">
+                                                <span class="truncate">Find Food</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-[-100px] w-full">
+                            <div class="flex justify-center items-end gap-4 md:gap-8 lg:gap-12">
+                                <div
+                                    class="transition-all duration-500 transform scale-75 opacity-60 translate-y-4 cursor-pointer hover:opacity-80 hover:scale-80">
+                                    <img alt="A delicious burger"
+                                        class="w-32 h-32 md:w-40 md:h-40 object-contain drop-shadow-[0_20px_15px_rgba(0,0,0,0.4)] animate-float-delay-1"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJzyW7umQS9EvZzn4Hd07koBb6ZErQmkOYNLwqJFRzN1-UXl62Vx5MRLqQ_vo1espxKih6Z7lpIzWGXowY_NJQpv7Kd1pIm_DEymXx8x2nRl1FQVnURsSZDFnFbdQtdICeFpE6f0ZEaKOEw8pyS9ceTSn8lYP1F4_XEyLufzfnRPCx7jyntlAT3YtLvLunk05sK24rPsHv_7eawtT-E2Mk4D0JqgVKjQRuFRecciBHCg7huCeDVdz_xSKC3sHEexeyeSmRYdqOvA" />
+                                </div>
+                                <div
+                                    class="transition-all duration-500 transform scale-100 opacity-100 z-10 cursor-pointer">
+                                    <img alt="A gourmet pizza"
+                                        class="w-48 h-48 md:w-60 md:h-60 object-contain drop-shadow-[0_35px_25px_rgba(255,69,0,0.25)] animate-float"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDum7kdKGKfPy64YHluTCiAPIMfmtjuWH1ClP7QSEblzJO5oMBWBaShlKcYLewJQUrWf2A7upQ-clW41hpF49j1uXqhD4hCurK-DhAzrO4AXQDrHKN2GEol8GmFdvsmaxyMoWMAQudkxD2XV0HLMtMMoYwHIaBZCXK4o-EvAqbapKUkBLGAtQVZMNTZpm7A24bBtDft3vmnvX9T4EY3vttJprA7hu8-OgfajG_ZSUfepUEJR5ytI-Nx3iYo0lOc35EFe7aHwxTsYw" />
+                                </div>
+                                <div
+                                    class="transition-all duration-500 transform scale-75 opacity-60 translate-y-4 cursor-pointer hover:opacity-80 hover:scale-80">
+                                    <img alt="Fresh sushi rolls"
+                                        class="w-32 h-32 md:w-40 md:h-40 object-contain drop-shadow-[0_20px_15px_rgba(0,0,0,0.4)] animate-float-delay-2"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqF_ht7dUe38_U2qklLKRdRhoivh7aYcAkKdDjTvCrf8OrqEvH-3JODJHWYNGeN0WQ6t8LNpxnpln5TB6LA_gvNtbY0WnK9G26oEB-cvAscoxo8F-WILuxE3j6cEZyl4Pt3DsrvMMFumRDLdUb8YgC-8Gp0DYrA93gPyy5JTDbdtLrZlFebEzmAccnG5Mzmk8MsDk3IPxtTEDgUL3LF1dI9IcvWlj_DlNOf6dHzJ9r1QWCQDgOa1YPE3iIesLzjT-r36Q2U2eUvw" />
+                                </div>
+                            </div>
+                            <div class="flex justify-center items-center mt-8 gap-6">
+                                <button
+                                    class="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white flex items-center justify-center hover:bg-white/20 transition-colors">
+                                    <span class="material-symbols-outlined">arrow_back</span>
+                                </button>
+                                <div class="flex items-center gap-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-white/40"></span>
+                                    <span class="w-2.5 h-2.5 rounded-full bg-white"></span>
+                                    <span class="w-2.5 h-2.5 rounded-full bg-white/40"></span>
+                                    <span class="w-2.5 h-2.5 rounded-full bg-white/40"></span>
+                                    <span class="w-2.5 h-2.5 rounded-full bg-white/40"></span>
+                                </div>
+                                <button
+                                    class="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white flex items-center justify-center hover:bg-white/20 transition-colors">
+                                    <span class="material-symbols-outlined">arrow_forward</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <section class="relative text-center pt-24">
+                    <h2 class="text-4xl font-bold tracking-tight pb-2 text-gradient dark:text-gradient-dark">What's Your
+                        Craving Today?</h2>
+                    <p class="max-w-2xl mx-auto text-subtle-light dark:text-subtle-dark mb-12">Explore a world of
+                        flavors with our curated cuisine collections.</p>
+                    <div class="relative group">
+                        <div
+                            class="flex justify-center items-center gap-4 md:gap-8 [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
+                            <div
+                                class="flex justify-center shrink-0 gap-4 md:gap-8 animate-marquee group-hover:[animation-play-state:paused]">
+                                <div class="flex flex-col justify-end w-48 h-64 rounded-2xl bg-cover bg-center p-4 text-white font-bold text-xl shadow-lg transition-transform duration-300 hover:!scale-105"
+                                    data-alt="Chinese noodles"
+                                    style='background-image: linear-gradient(to top, rgba(0,0,0,0.8), transparent), url("https://lh3.googleusercontent.com/aida-public/AB6AXuA4l4iTtn7K4iZSYAxEfsWBgU5_GnjNI5nd-c6JN-meB3AASdS66MnJbx7Y12mAHGa3Cqip8R6FnDvbDLyEzYlK1mho9DIb-JpVp90kFBi4Z4Y6m-0CoSMyXk2t-XKZ78jGGVDpUf-BFGpR2o90Wr9D8hKOaHF_FFbGPCzzjcpF1zwArpYO6kVOX0YEugMSnN5lJkmP08VFyE0r-s6kdsyFeBJKURMTQZ5SLJ3K4kPp8VfRRnDUmFBzEYKCggx-SoZ3OM4718giOg");'>
+                                    Chinese</div>
+                                <div class="flex flex-col justify-end w-48 h-64 rounded-2xl bg-cover bg-center p-4 text-white font-bold text-xl shadow-lg transition-transform duration-300 hover:!scale-105"
+                                    data-alt="South Indian dosa"
+                                    style='background-image: linear-gradient(to top, rgba(0,0,0,0.8), transparent), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBqF0_WNtHnyrX837RU_liz-4gi4NJ1n7rncqRVSXPRvJ7QboF9K7Hd4vgp3-GkyABj62ESOU0c2W6_pvKSB6w9Oh7MChuGOd_COYyZVf7tsGMn1Es_5qzJzDMusbZ4dkQHr7jyXDg8WGZOyu4mHCRv5OdMtAEyZu91oPH-RgSbq8SL-Py9hA_D0_LK2HdJXYZIDGLcQ0SmYZpcy7aopECmD3L5InPBT3r8Sw_j6fTehhIMJXbPHdM7-1ITR6qE6GR0uJZGMMMvug");'>
+                                    South Indian</div>
+                                <div class="flex flex-col justify-end w-48 h-64 rounded-2xl bg-cover bg-center p-4 text-white font-bold text-xl shadow-lg transition-transform duration-300 hover:!scale-105"
+                                    data-alt="Italian pizza"
+                                    style='background-image: linear-gradient(to top, rgba(0,0,0,0.8), transparent), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDZ-PYFR9nXIuEAsp-iVdJBqv2g6tnMFrOka1yGH2WEMd8qnXwbeRvjZHz6Elklk4T_yxmF53SmSNQuUuszIjq4jC5Feh40cTRXlS9VS_kXNVJekeUnVYGQEJuVCvFEDefLbClbFjVFx_JcHF0zChdfJb3ZAi8sgmRU_JmhhMbkVKic-TlyvD7W8-WWgL9N11LPMJlrr5BNY9bkQ7wcxysP_g6BN3O_IkccguinwkbVb9T34qtVS8NPrVx5a8mWbxw3uLb138qPsA");'>
+                                    Italian</div>
+                                <div class="flex flex-col justify-end w-48 h-64 rounded-2xl bg-cover bg-center p-4 text-white font-bold text-xl shadow-lg transition-transform duration-300 hover:!scale-105"
+                                    data-alt="Street food tacos"
+                                    style='background-image: linear-gradient(to top, rgba(0,0,0,0.8), transparent), url("https://lh3.googleusercontent.com/aida-public/AB6AXuCd5RRe1FlF84AHwpYn5JvE6A_rv4XVwUWHd5QMLfOhEsdCswRLaLeunLkmXnwTPeTbumE37rBogEPxdeCZ6Gnq6Wg06uIz4JW3_Z7tB9WHrirEm3WqZ7hrpE4e2KtDbhrjhMM-w6iPQNlqs_hFufu3Xi3kU55PjUWdDTQVDpM5KHjjFulQFjqhfLNBaFXjEUJU8scmXKTwhz8UJhRrsbZytXn9LBjB0Su_39Dr_Yk1YYJ0CBWPuqBj6oS47Gev2nJEZvfMW99cew");'>
+                                    Street Food</div>
+                                <div class="flex flex-col justify-end w-48 h-64 rounded-2xl bg-cover bg-center p-4 text-white font-bold text-xl shadow-lg transition-transform duration-300 hover:!scale-105"
+                                    data-alt="Arabian shawarma"
+                                    style='background-image: linear-gradient(to top, rgba(0,0,0,0.8), transparent), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBLGFEdHq0kt20Gu0dGd0aWaos7s6wcOTgnVOWIezQODMBI-uneTUXyuoGWBNWGO7tDGuW5V_ZACAUizDCd2zr3q8Bb3MTBTga4vy9gkOAiKdVd5xW7M5S-D3iwl8qrz9g8gL8gqcXwZuqB3_Wdocz2uKG1XyrXrl0XCSCNKdOhRqIqirv91ruf1VY39uPR2XTSQicrzeaBchV4t1hOXv-qKaaizXBmzGbp-LSvfm1PvPbIkwuPNOipX6249LRXUEA-ATx_MPCTWQ");'>
+                                    Arabian</div>
+                                <div class="flex flex-col justify-end w-48 h-64 rounded-2xl bg-cover bg-center p-4 text-white font-bold text-xl shadow-lg transition-transform duration-300 hover:!scale-105"
+                                    data-alt="Desserts"
+                                    style='background-image: linear-gradient(to top, rgba(0,0,0,0.8), transparent), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDREGs7sJUQyLoP9JyFQMORnRh410MHSQ4BjHrMP7de6KU8dZzYNhXmWwyhZTI7lvR54MjEc2ilCcbxnHD3pGdEj4y1prdPgLOTmci3DFXOO91NK2JeqHwqilZAUtwNaILNkvn5KoAf9YmxdRnb-qQnNJW86OcJe0zCf-8OGqzNMOyza8V13rXSwJuxlFTenbmufKzMV0hCvqT7YqSQ05lC5yzjB6EWeAwqRbmwDUVC0mNcdkloII_QXQJv--92skO6BTwgGnSsHQ");'>
+                                    Desserts</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="mt-20 md:mt-32">
+                    <div class="text-center">
+                        <h2 class="text-4xl font-bold tracking-tight pb-2 text-gradient dark:text-gradient-dark">
+                            Featured Restaurants</h2>
+                        <p class="max-w-2xl mx-auto text-subtle-light dark:text-subtle-dark mb-12">Handpicked for an
+                            exceptional dining experience, right at your doorstep.</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div
+                            class="relative bg-white dark:bg-surface-dark rounded-2xl shadow-lg hover:shadow-2xl hover:shadow-primary/20 dark:hover:shadow-primary/10 transition-all duration-300 group border border-transparent dark:border-white/10 overflow-hidden transform hover:-translate-y-2">
+                            <img class="h-48 w-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                data-alt="Interior of The Golden Spoon restaurant"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-Awt2wVdDBUfYX3qfO1c38_VLQA8R98453dv1bMS0YBZKAT5nDNs_Iic_rz_UM06d5_UN6rgQMDOm5Zhv7CEp42Oh8Bd0hRjtW0Iq4ZBoOoWYPnmeD5yAsmcgvpYL2kqx-9I_Tjq6MzrOi9NDKlXZoCQN9MhY4XXW52o_MucDEXzC0m_47dPEQYu9fTsV3C6h6YoNX87Yl9nWEWF0rbzmZiSMUlDMSg_BeVeC8neERQwq_81WScd31IuWAidAEV98Ld7CO8civA" />
+                            <div class="p-5">
+                                <h3 class="text-xl font-bold">The Golden Spoon</h3>
+                                <div class="flex items-center mt-2 text-sm text-subtle-light dark:text-subtle-dark">
+                                    <span
+                                        class="material-symbols-outlined text-amber-400 text-lg !leading-none fill-1">star</span>
+                                    <span class="ml-1.5 font-semibold text-text-light dark:text-text-dark">4.8</span>
+                                    <span class="mx-2.5">·</span>
+                                    <span>Modern European</span>
+                                </div>
+                            </div>
+                            <div
+                                class="absolute top-4 right-4 bg-primary/80 text-white text-xs font-bold px-3 py-1.5 rounded-full backdrop-blur-sm">
+                                25-35 min</div>
+                        </div>
+                        <div
+                            class="relative bg-white dark:bg-surface-dark rounded-2xl shadow-lg hover:shadow-2xl hover:shadow-primary/20 dark:hover:shadow-primary/10 transition-all duration-300 group border border-transparent dark:border-white/10 overflow-hidden transform hover:-translate-y-2">
+                            <img class="h-48 w-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                data-alt="Pizza Palace pizzeria"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkVR4t1wDsnSja1ZbKbRekgJFSlHLuM6Jy_XkmO1ISfUTtUCjLeeIB0DxIblCoTOUN-PVnvWQg-TpXcWeo-xx8Cnlieae9GVASZAcSQjiq0xhlkfnwzDxN6M8cdrowl9SE4_POBJdjka9JPazeVJeJFzNTCQJB4Gswn2Mnu0m9t5igj6T-93GcaDrrh2cZfdGQ55NXESE844YSjjjrVMn6Eul8WVxt5ZOg-VCc-XqPw2vuDzfA_xitbt9ClkTtPkkW6i5Gl5RArA" />
+                            <div class="p-5">
+                                <h3 class="text-xl font-bold">Pizza Palace</h3>
+                                <div class="flex items-center mt-2 text-sm text-subtle-light dark:text-subtle-dark">
+                                    <span
+                                        class="material-symbols-outlined text-amber-400 text-lg !leading-none fill-1">star</span>
+                                    <span class="ml-1.5 font-semibold text-text-light dark:text-text-dark">4.6</span>
+                                    <span class="mx-2.5">·</span>
+                                    <span>Italian Pizzeria</span>
+                                </div>
+                            </div>
+                            <div
+                                class="absolute top-4 right-4 bg-primary/80 text-white text-xs font-bold px-3 py-1.5 rounded-full backdrop-blur-sm">
+                                30-40 min</div>
+                        </div>
+                        <div
+                            class="relative bg-white dark:bg-surface-dark rounded-2xl shadow-lg hover:shadow-2xl hover:shadow-primary/20 dark:hover:shadow-primary/10 transition-all duration-300 group border border-transparent dark:border-white/10 overflow-hidden transform hover:-translate-y-2">
+                            <img class="h-48 w-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                data-alt="Sushi Central restaurant"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYjIj6B_KyDIaAXjyFnZhjsnObSY80hN00uQE40DXrKscRIi9lztuqQeD99ncJsCaUI4EwNMeSWxrZ_EBmfJ0RIeoUVsLPrvz0A5ROcoGGaS0JEnthOGtj6gkkLcPeJHzCufnp9GjZHc3kyNEl9JpSkLKNhcneG9BZTp2B7Ej6hkLtRr-46TTYQC-8yn_IgbmpIKSdMtwTrG0djAFOIB5Rq6Caksx-nx8jtvOyVFdg41-b5ZowQ-6oy-dUl0hPHX7tHewTIfG2rA" />
+                            <div class="p-5">
+                                <h3 class="text-xl font-bold">Sushi Central</h3>
+                                <div class="flex items-center mt-2 text-sm text-subtle-light dark:text-subtle-dark">
+                                    <span
+                                        class="material-symbols-outlined text-amber-400 text-lg !leading-none fill-1">star</span>
+                                    <span class="ml-1.5 font-semibold text-text-light dark:text-text-dark">4.9</span>
+                                    <span class="mx-2.5">·</span>
+                                    <span>Japanese Sushi Bar</span>
+                                </div>
+                            </div>
+                            <div
+                                class="absolute top-4 right-4 bg-primary/80 text-white text-xs font-bold px-3 py-1.5 rounded-full backdrop-blur-sm">
+                                20-30 min</div>
+                        </div>
+                    </div>
+                </section>
+                <section
+                    class="bg-primary/5 dark:bg-primary/10 rounded-3xl p-8 md:p-12 lg:p-16 flex flex-col lg:flex-row items-center gap-12 text-center lg:text-left mt-20 md:mt-32">
+                    <div class="flex-1">
+                        <h2 class="text-4xl font-bold tracking-tight text-text-light dark:text-white">Get the Flavista
+                            App!</h2>
+                        <p class="mt-4 text-lg text-subtle-light dark:text-subtle-dark max-w-2xl mx-auto lg:mx-0">Enjoy
+                            exclusive deals, track your order in real-time, and reorder your favorites with a single
+                            tap. Your food journey, simplified.</p>
+                        <div class="mt-8 flex justify-center lg:justify-start gap-4">
+                            <a class="inline-block bg-black text-white rounded-lg px-6 py-3 transition-transform hover:scale-105"
+                                href="#">
+                                <div class="flex items-center gap-3"><svg class="w-6 h-6" fill="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path
+                                            d="M19.3 4.44a3.54 3.54 0 0 0-2.88-1.44 3.7 3.7 0 0 0-3.32 2.09A3.75 3.75 0 0 0 10.2 3a3.53 3.53 0 0 0-2.88 1.44 3.61 3.61 0 0 0-1.07 2.65 3.5 3.5 0 0 0 .5 1.93c.03.05.06.1.1.15l4.8 4.8 4.8-4.8c.04-.05.07-.1.1-.15a3.5 3.5 0 0 0 .5-1.93 3.61 3.61 0 0 0-1.05-2.65M12 14.45l-5.63-5.63c-.22-.22-.4-.48-.52-.75A4.53 4.53 0 0 1 5.3 5.4a4.4 4.4 0 0 1 3.5-1.54 4.7 4.7 0 0 1 4.58 2.94h.04a4.7 4.7 0 0 1 4.58-2.94 4.4 4.4 0 0 1 3.5 1.54 4.53 4.53 0 0 1-.55 2.67c-.12.27-.3.53-.52.75L12 14.45z">
+                                        </path>
+                                        <path
+                                            d="M12 21a1 1 0 0 1-.71-.29l-6-6A1 1 0 0 1 6.7 13.3l5.3 5.3 5.3-5.3a1 1 0 0 1 1.4 1.4l-6 6a1 1 0 0 1-.7.29z">
+                                        </path>
+                                    </svg>
+                                    <div>
+                                        <p class="text-xs">GET IT ON</p>
+                                        <p class="text-lg font-semibold">App Store</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="inline-block bg-black text-white rounded-lg px-6 py-3 transition-transform hover:scale-105"
+                                href="#">
+                                <div class="flex items-center gap-3"><svg class="w-6 h-6" fill="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path
+                                            d="M7.6 5.6a2.08 2.08 0 0 1 2-1.39h.12a1.9 1.9 0 0 1 1.63.82l6.47 6.47a2.08 2.08 0 0 1 0 2.94l-6.47 6.47a1.9 1.9 0 0 1-1.63.82h-.12a2.08 2.08 0 0 1-2-1.39L4.85 12Zm2.31.84a.5.5 0 0 0-.49.34L6.67 12l2.75 5.22a.5.5 0 0 0 .49.34h.12a.47.47 0 0 0 .4-.18l6.48-6.47a.54.54 0 0 0 0-.75L9.43 4.64a.47.47 0 0 0-.4-.18h-.12Z">
+                                        </path>
+                                    </svg>
+                                    <div>
+                                        <p class="text-xs">GET IT ON</p>
+                                        <p class="text-lg font-semibold">Google Play</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="relative w-64 h-64 lg:w-80 lg:h-80 flex-shrink-0">
+                        <img alt="Flavista app on a smartphone"
+                            class="absolute inset-0 w-full h-full object-contain drop-shadow-2xl"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBe1alIdSuUG70PmpihLsRyDC1ZF9ucgb2rXKsFk7jJeqsbPq9NojSqv5Eif-yYOZnncNPXRXb2cLHyiYU6tImiVm7d8LNNpT5CkBjhntf5CR8gGhd0ZC32Wsr7s-CC7PCZfj3bg0qPOlbToKuiEB1k-7bVOpFD54Uwo7VKwX63i6cDd4YwyN3TYIbuvz3D8eovxADUBJ0uQ2C2wAqKIGL0r2fNw3Y8ZmoiGG5nAqUA7UQsnAiqMmytJNxnco9x3rCbqCrbLWAwxw" />
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>
