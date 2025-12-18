@@ -73,10 +73,9 @@ const Home = () => {
         </div>
       </div>
 
-      {/* MAIN CONTENT */}
+      
       <div className="relative z-10 flex-grow flex flex-col items-center justify-center pb-12">
         
-        {/* ELEGANT TEXT HEADER */}
         <div className="text-center px-4 mb-8 animate-fadeIn z-20 max-w-5xl">
           <p className="text-yellow-500 font-montserrat text-sm md:text-base tracking-[0.3em] uppercase mb-2 font-semibold">
             Chef's Special Selection
@@ -86,7 +85,6 @@ const Home = () => {
           </h2>
         </div>
 
-        {/* CAROUSEL WITH N-SHAPE CURVE */}
         <Swiper
           onSlideChange={(swiper) => setIndex(swiper.realIndex)}
           effect={"coverflow"}
@@ -96,7 +94,7 @@ const Home = () => {
           loop={true}
           slideToClickedSlide={true}
           autoplay={{
-            delay: 8000,
+            delay: 7000,
             disableOnInteraction: false,
             pauseOnMouseEnter: true,
           }}
@@ -108,7 +106,7 @@ const Home = () => {
             slideShadows: false,
           }}
           modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
-          className="w-full py-8"
+          className="w-full py-8 "
         >
           {swiperData.map((food, i) => (
             <SwiperSlide

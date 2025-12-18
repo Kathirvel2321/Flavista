@@ -2,25 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
-.logbtn{
-    @apply px-3 py-1 rounded-full border-2 border-[#c9572a] font-bold md:text-sm lg:text-lg text-sm hover:bg-[#c9572a]  transition-all duration-300;
-
+.logbtn {
+  @apply px-3 py-1 rounded-full border-2 border-[#c9572a] font-bold md:text-sm lg:text-lg text-sm hover:bg-[#c9572a]  transition-all duration-300;
 }
-.logbtn{
-    box-shadow:inset 0 0 14px #ff7e5f;
+.logbtn {
+  box-shadow: inset 0 0 14px #ff7e5f;
 }
-.brandname{
-    background: linear-gradient(to right, #ff7e5f, #feb47b, #ff7e5f);
-    @apply bg-clip-text text-transparent font-bold;
+.brandname {
+  background: linear-gradient(to right, #ff7e5f, #feb47b, #ff7e5f);
+  @apply bg-clip-text text-transparent font-bold;
 }
 .menu-link {
-    @apply text-sm text-white/40 cursor-pointer transition-all duration-300
-
+  @apply text-sm text-white/40 cursor-pointer transition-all duration-300;
 }
 .menu-link:hover {
-    @apply  text-white/90 font-bold scale-125 transition-all duration-500
+  @apply text-white/90 font-bold scale-125 transition-all duration-500;
 }
 .menu-link.active {
-    @apply text-white/100 font-bold scale-125 
+  @apply text-white/100 font-bold scale-125;
+}
 
+.imagecontainer {
+  box-shadow: 0 0 14px black;
+  @apply lg:w-52 lg:h-64 md:w-36 md:h-48  relative rounded-2xl flex flex-grow md:hover:w-80 md:hover:scale-100 hover:scale-105 transition-all duration-700 overflow-hidden
+     inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent;
+}
+
+.cat-image {
+  @apply object-cover w-[100%] h-[110%];
+}
+.cat-bg {
+  background-image: radial-gradient(
+     at 50% 60%,
+    rgba(219, 99, 34, 0.3),
+    transparent 50%
+    );
+  background-repeat: no-repeat;
+  background-size: cover;
 }
