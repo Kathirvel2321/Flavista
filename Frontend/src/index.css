@@ -40,3 +40,91 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+
+
+.trend-box{
+    @apply  w-full h-full rounded-[2rem] shadow-xl backdrop-blur-sm border border-white/10 relative transition-all duration-500 ease-in-out;
+}
+
+
+.trend-container:hover .trend-box {
+    @apply bg-black/40  opacity-50 scale-95 blur-[1px];
+}
+
+
+.trend-container .trend-box:hover {
+    @apply blur-0 opacity-100 scale-105 z-20 bg-none;
+    box-shadow: 0 0 30px rgba(236, 95, 20, 0.2); /* Strong orange glow */
+}
+.trend-bg{
+    background-image: radial-gradient(
+     at 0% 100%,
+    rgba(219, 99, 34, 0.3),
+    transparent 20%
+    ),
+    radial-gradient(
+     at 110% 10%,
+    rgba(219, 99, 34, 0.3),
+    transparent 20%
+    );
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.trend-title{
+  @apply bg-[linear-gradient(#ff7e5f,#feb47b,#ff7e5f)] text-transparent bg-clip-text tracking-wider
+  
+}
+.trend-title::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10%;
+  width: 6px;
+  height: 70%;
+  filter: blur(1px);
+  border-radius: 2px;
+  background: #ff6a00;
+
+  box-shadow:
+    0 0 10px rgba(255, 106, 0, 0.8),
+    0 0 20px rgba(255, 106, 0, 0.6);
+
+}
+
+.addcard-btn:hover{
+  box-shadow: 0 0 7px orange;
+  transition: all 0.3s linear;
+
+}
+
+.bill{
+ box-shadow: 0 0 10px rgba(255, 106, 0, 0.9);
+
+}
+.calculation-btn{
+  @apply w-full cursor-pointer rounded-full flex justify-center font-display h-full p-1.5 text-xl
+}
+
+.food-detailpage{
+  background-image: radial-gradient(circle at 100% 0%, rgb(225, 119, 19,0.2) 2%, transparent 20%),
+  radial-gradient(circle at 0% 100%, rgb(225, 119, 19,0.2) 2%, transparent 20%),
+  radial-gradient(circle at -10% 40%, rgb(225, 119, 19,0.2) 2%, transparent 20%),
+  radial-gradient(circle at 100% 80%, rgb(225, 119, 19,0.2) 2%, transparent 20%);
+}
+
+.backgroundimage{
+  background-image: radial-gradient(
+     at 100% 0%,
+    rgba(219, 99, 34, 0.3),
+    transparent 20%
+    ),
+    radial-gradient(
+     at 0% 110%,
+    rgba(219, 99, 34, 0.3),
+    transparent 20%
+    );
+  background-repeat: no-repeat;
+  background-size: cover;
+}

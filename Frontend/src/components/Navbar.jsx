@@ -4,9 +4,11 @@ import Flavistalogo from '../logo/Flavistalogo';
 import { IoCart,IoMenu,IoClose } from "react-icons/io5";
 import { Link } from 'react-scroll';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 
 const Navbar = () => {
+  const navigate = useNavigate();
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
@@ -109,7 +111,8 @@ const Navbar = () => {
       </div>
       
       <div className="flex items-center gap-4"> 
-        <IoCart className='lg:w-7 lg:h-7 h-7 w-6 cursor-pointer hover:text-[#FF6B6B] transition-all duration-300 hover:-rotate-6 '/>
+        <button onClick={()=> navigate("/cart")}><IoCart className='lg:w-7 lg:h-7 h-7 w-6 cursor-pointer hover:text-[#FF6B6B] transition-all duration-300 hover:-rotate-6 '/></button>
+        
         {!isLoggedIn ?(
         <button className='logbtn'>
           Login

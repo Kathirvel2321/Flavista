@@ -10,7 +10,7 @@ export default {
         "primary": "rgb(var(--theme-primary) / <alpha-value>)",
         "secondary": "rgb(var(--theme-secondary) / <alpha-value>)",
         "background-light": "#FDFBF7",
-        "background-dark": "rgb(var(--theme-background-dark) / <alpha-value>)",
+        "background-dark": "#120b09",
         "surface-dark": "#1A110E",
         "text-light": "#1C1C1C",
         "text-dark": "#EAE0DC",
@@ -18,7 +18,8 @@ export default {
         "subtle-dark": "#6B6664"
       },
       fontFamily: {
-        "display": ["Plus Jakarta Sans", "sans-serif"]
+        "display": ["Plus Jakarta Sans", "sans-serif"],
+        "fashion":["Fredericka the Great", "serif"],
       },
       screens: {
         'xs': '480px',

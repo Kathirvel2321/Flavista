@@ -11,6 +11,7 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import { useState } from "react";
+import FloatingCartBar from "../components/FloatingCartBar";
 const Home = () => {
   const [index, setIndex] = useState(0);
 
@@ -215,6 +216,7 @@ const Home = () => {
           z-index: 50;
         }
       `}</style>
+      <FloatingCartBar />
     </div>
   );
 };
