@@ -20,7 +20,7 @@ const Settings = () => {
       if (!token) return navigate('/login');
 
       try {
-        const res = await fetch('http://localhost:5000/api/auth/profile', {
+        const res = await fetch('http://flavista.onrender.com/api/auth/profile', {
           headers: { Authorization: `Bearer ${token}` }
         });
         const data = await res.json();
@@ -49,7 +49,7 @@ const Settings = () => {
     if (password) body.password = password;
 
     try {
-      const res = await fetch('http://localhost:5000/api/auth/profile', {
+      const res = await fetch('http://flavista.onrender.com/api/auth/profile', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ const Settings = () => {
   const handleDeleteAccount = async () => {
     const token = localStorage.getItem('token');
     try {
-      const res = await fetch('http://localhost:5000/api/auth/profile', {
+      const res = await fetch('http://flavista.onrender.com/api/auth/profile', {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` }
       });

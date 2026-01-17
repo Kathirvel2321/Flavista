@@ -29,7 +29,7 @@ const ResetPassword = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:5000/api/auth/resetpassword/${resetToken}`, {
+      const response = await fetch(`http://flavista.onrender.com/api/auth/resetpassword/${resetToken}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ password }),

@@ -27,7 +27,7 @@ const CategoryFoods = () => {
     const fetchCategoryFoods = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`http://localhost:5000/api/foods/category/${category}`);
+        const response = await fetch(`http://flavista.onrender.com/api/foods/category/${category}`);
         if (response.ok) {
           const data = await response.json();
           setFoods(data);

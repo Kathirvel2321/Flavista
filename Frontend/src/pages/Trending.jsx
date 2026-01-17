@@ -9,7 +9,7 @@ const Trending = () => {
     useEffect(() => {
         const fetchTrending = async () => {
             try {
-                const res = await fetch('http://localhost:5000/api/foods/trending');
+                const res = await fetch('http://flavista.onrender.com/api/foods/trending');
                 if (!res.ok) {
                     throw new Error(`HTTP error! Status: ${res.status}`);
                 }

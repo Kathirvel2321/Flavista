@@ -25,7 +25,7 @@ const OrderTracking = () => {
           return;
         }
 
-        const response = await fetch(`http://localhost:5000/api/orders/${id}`, {
+        const response = await fetch(`http://flavista.onrender.com/api/orders/${id}`, {
           headers: {
             'Authorization': `Bearer ${token}`,
           },
