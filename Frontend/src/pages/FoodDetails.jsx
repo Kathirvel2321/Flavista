@@ -41,7 +41,7 @@ const FoodDetails = () => {
   useEffect(() => {
     const token = localStorage.getItem('token') || sessionStorage.getItem('token');
     if (token) {
-      fetch('http://localhost:5000/api/auth/profile', {
+      fetch('http://flavista.onrender.com/api/auth/profile', {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then(res => res.json())
@@ -55,7 +55,7 @@ const FoodDetails = () => {
       setLoading(true);
       try {
         // 1. Try Fetch from API first (Prioritize Backend Data)
-        const response = await fetch(`http://localhost:5000/api/foods/${id}`);
+        const response = await fetch(`http://flavista.onrender.com/api/foods/${id}`);
 
         if (response.ok) {
           const apiFood = await response.json();
@@ -63,7 +63,7 @@ const FoodDetails = () => {
           // Set default reviews for API items since they don't have real reviews yet
           
           // Fetch Real Reviews from Database
-          fetch(`http://localhost:5000/api/reviews/${apiFood._id || apiFood.id}`)
+          fetch(`http://flavista.onrender.com/api/reviews/${apiFood._id || apiFood.id}`)
             .then(res => res.json())
             .then(data => {
               if (Array.isArray(data) && data.length > 0) {
@@ -128,7 +128,7 @@ const FoodDetails = () => {
     const fetchRelatedFoods = async () => {
       try {
         const category = food.category || food.cuisine;
-        const response = await fetch(`http://localhost:5000/api/foods/category/${category}`);
+        const response = await fetch(`http://flavista.onrender.com/api/foods/category/${category}`);
         
         if (response.ok) {
           const data = await response.json();
@@ -307,7 +307,7 @@ const FoodDetails = () => {
 
     // Persist to Backend
     try {
-      await fetch(`http://localhost:5000/api/reviews/${food._id || food.id}`, {
+      await fetch(`http://flavista.onrender.com/api/reviews/${food._id || food.id}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
         body: JSON.stringify({ 

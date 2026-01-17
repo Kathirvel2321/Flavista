@@ -28,7 +28,7 @@ const Home = () => {
   useEffect(() => {
     const fetchTrending = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/foods/trending');
+        const res = await fetch('http://flavista.onrender.com/api/foods/trending');
         const data = await res.json();
         if (data && Array.isArray(data)) {
           setTrendingFoods(data.slice(0, 5));
@@ -53,7 +53,7 @@ const Home = () => {
       }
       
       try {
-        const res = await fetch(`http://localhost:5000/api/foods/suggestions?query=${query}`);
+        const res = await fetch(`http://flavista.onrender.com/api/foods/suggestions?query=${query}`);
         const data = await res.json();
         setSuggestions(data);
       } catch (error) {
@@ -85,7 +85,7 @@ const Home = () => {
     setQuery(searchQuery);
     
     try {
-      const res = await fetch(`http://localhost:5000/api/foods/search?query=${searchQuery}`);
+      const res = await fetch(`http://flavista.onrender.com/api/foods/search?query=${searchQuery}`);
       const data = await res.json();
       if (res.ok) {
         const foodItem = Array.isArray(data) ? data[0] : data;
