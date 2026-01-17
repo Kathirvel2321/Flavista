@@ -28,7 +28,7 @@ const Home = () => {
   useEffect(() => {
     const fetchTrending = async () => {
       try {
-        const res = await fetch('http://flavista.onrender.com/api/foods/trending');
+        const res = await fetch('https://flavista.onrender.com/api/foods/trending');
         const data = await res.json();
         if (data && Array.isArray(data)) {
           setTrendingFoods(data.slice(0, 5));
@@ -53,7 +53,7 @@ const Home = () => {
       }
       
       try {
-        const res = await fetch(`http://flavista.onrender.com/api/foods/suggestions?query=${query}`);
+        const res = await fetch(`https://flavista.onrender.com/api/foods/suggestions?query=${query}`);
         const data = await res.json();
         setSuggestions(data);
       } catch (error) {
@@ -85,7 +85,7 @@ const Home = () => {
     setQuery(searchQuery);
     
     try {
-      const res = await fetch(`http://flavista.onrender.com/api/foods/search?query=${searchQuery}`);
+      const res = await fetch(`https://flavista.onrender.com/api/foods/search?query=${searchQuery}`);
       const data = await res.json();
       if (res.ok) {
         const foodItem = Array.isArray(data) ? data[0] : data;
@@ -133,7 +133,7 @@ const Home = () => {
         <div ref={wrapperRef} className="relative w-11/12 md:w-1/2 lg:w-1/3">
         <div className="flex items-center bg-black/30 backdrop-blur-xl border border-white/10 rounded-full px-6 py-4 w-full shadow-2xl transition-all duration-300 hover:bg-black/40 hover:border-yellow-500/30 group">
           <svg
-            xmlns="http://www.w3.org/2000/svg"
+            xmlns="https://www.w3.org/2000/svg"
             className="h-5 w-5 text-gray-400 group-hover:text-yellow-400 transition-colors"
             fill="none"
             viewBox="0 0 24 24"
@@ -172,7 +172,7 @@ const Home = () => {
                 onClick={() => handleSearch(suggestion)}
                 className="px-6 py-3 text-white/80 hover:bg-yellow-500/20 hover:text-yellow-400 cursor-pointer transition-colors flex items-center gap-3 border-b border-white/5 last:border-none font-montserrat"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="https://www.w3.org/2000/svg" className="h-4 w-4 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
                 {suggestion}
@@ -277,7 +277,7 @@ const Home = () => {
       </div>
 
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600&display=swap');
+        @import url('httpss://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600&display=swap');
         
         .font-playfair {
           font-family: 'Playfair Display', serif;

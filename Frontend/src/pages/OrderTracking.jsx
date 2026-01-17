@@ -25,7 +25,7 @@ const OrderTracking = () => {
           return;
         }
 
-        const response = await fetch(`http://flavista.onrender.com/api/orders/${id}`, {
+        const response = await fetch(`https://flavista.onrender.com/api/orders/${id}`, {
           headers: {
             'Authorization': `Bearer ${token}`,
           },
@@ -207,8 +207,8 @@ const OrderTracking = () => {
                 >
                   {/* Dark Theme Tiles */}
                   <TileLayer
-                    url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+                    url="httpss://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+                    attribution='&copy; <a href="httpss://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="httpss://carto.com/attributions">CARTO</a>'
                   />
                   
                   <Marker position={restaurantPos} icon={restIcon} />
@@ -280,7 +280,7 @@ const OrderTracking = () => {
 
                   <div className="flex items-center gap-4 mb-6 relative z-10">
                         <div className="relative">
-                          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Driver" className="w-14 h-14 rounded-2xl object-cover border-2 border-white/30" />
+                          <img src="httpss://randomuser.me/api/portraits/men/32.jpg" alt="Driver" className="w-14 h-14 rounded-2xl object-cover border-2 border-white/30" />
                           <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 border-2 border-orange-600 rounded-full"></div>
                         </div>
                         <div className="flex-1">

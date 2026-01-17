@@ -21,7 +21,7 @@ const MyOrders = () => {
       }
 
       try {
-        const response = await fetch('http://flavista.onrender.com/api/orders/myorders', {
+        const response = await fetch('https://flavista.onrender.com/api/orders/myorders', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -60,7 +60,7 @@ const MyOrders = () => {
 
     try {
       const token = localStorage.getItem('token') || sessionStorage.getItem('token');
-      const response = await fetch(`http://flavista.onrender.com/api/orders/${orderId}/cancel`, {
+      const response = await fetch(`https://flavista.onrender.com/api/orders/${orderId}/cancel`, {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`,

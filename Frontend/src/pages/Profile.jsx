@@ -20,7 +20,7 @@ const Profile = () => {
       if (!token) return navigate('/login');
 
       try {
-        const res = await fetch('http://flavista.onrender.com/api/auth/profile', {
+        const res = await fetch('https://flavista.onrender.com/api/auth/profile', {
           headers: { Authorization: `Bearer ${token}` }
         });
         const data = await res.json();
@@ -49,7 +49,7 @@ const Profile = () => {
     setUploading(true);
 
     try {
-      const res = await fetch('http://flavista.onrender.com/api/upload', {
+      const res = await fetch('https://flavista.onrender.com/api/upload', {
         method: 'POST',
         body: formData,
       });
@@ -71,7 +71,7 @@ const Profile = () => {
   const updateProfile = async (userData) => {
     const token = localStorage.getItem('token');
     try {
-      const res = await fetch('http://flavista.onrender.com/api/auth/profile', {
+      const res = await fetch('https://flavista.onrender.com/api/auth/profile', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -98,8 +98,8 @@ const Profile = () => {
 
   // Helper to resolve image URL (Google vs Local)
   const getImageUrl = (path) => {
-    if (!path) return "https://via.placeholder.com/150";
-    return path.startsWith('http') ? path : `http://flavista.onrender.com/api/images/${path}`;
+    if (!path) return "httpss://via.placeholder.com/150";
+    return path.startsWith('https') ? path : `https://flavista.onrender.com/api/images/${path}`;
   };
 
   return (
