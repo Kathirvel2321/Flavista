@@ -21,7 +21,7 @@ const Navbar = () => {
   const fetchUserData = () => {
     const token = localStorage.getItem('token');
     if (token) {
-      fetch('http://localhost:5000/api/auth/profile', {
+      fetch('https://flavista.onrender.com/api/auth/profile', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -91,7 +91,7 @@ const Navbar = () => {
 
   const getImageUrl = (path) => {
     if (!path) return null;
-    return path.startsWith('http') ? path : `http://localhost:5000${path}`;
+    return path.startsWith('http') ? path : `https://flavista.onrender.com/api/images/${path}`;
   };
 
   const handleNavClick = (path) => {
