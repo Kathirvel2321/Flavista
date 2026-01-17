@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.logbtn {
+  @apply px-3 py-1 rounded-full border-2 border-[#c9572a] font-bold md:text-sm lg:text-lg text-sm hover:bg-[#c9572a]  transition-all duration-300;
+}
+.logbtn {
+  box-shadow: inset 0 0 14px #ff7e5f;
+}
+.brandname {
+  background: linear-gradient(to right, #ff7e5f, #feb47b, #ff7e5f);
+  @apply bg-clip-text text-transparent font-bold;
+}
+.menu-link {
+  @apply text-sm text-white/40 cursor-pointer transition-all duration-300;
+}
+.menu-link:hover {
+  @apply text-white/90 font-bold scale-125 transition-all duration-500;
+}
+.menu-link.active {
+  @apply text-white/100 font-bold scale-125;
+}
+
+.imagecontainer {
+  box-shadow: 0 0 14px black;
+  @apply lg:w-52 lg:h-64 md:w-36 md:h-48  relative rounded-2xl flex flex-grow md:hover:w-80 md:hover:scale-100 hover:scale-105 transition-all duration-700 overflow-hidden
+     inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent;
+}
+
+.cat-image {
+  @apply object-cover w-[100%] h-[110%];
+}
+.cat-bg {
+  background-image: radial-gradient(
+     at 50% 60%,
+    rgba(219, 99, 34, 0.3),
+    transparent 50%
+    );
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+
+.trend-box{
+    @apply  w-full h-full rounded-[2rem] shadow-xl backdrop-blur-sm border border-white/10 relative transition-all duration-500 ease-in-out;
+}
+
+
+.trend-container:hover .trend-box {
+    @apply bg-black/40  opacity-50 scale-95 blur-[1px];
+}
+
+
+.trend-container .trend-box:hover {
+    @apply blur-0 opacity-100 scale-105 z-20 bg-none;
+    box-shadow: 0 0 30px rgba(236, 95, 20, 0.2); /* Strong orange glow */
+}
+.trend-bg{
+    background-image: radial-gradient(
+     at 0% 100%,
+    rgba(219, 99, 34, 0.3),
+    transparent 20%
+    ),
+    radial-gradient(
+     at 110% 10%,
+    rgba(219, 99, 34, 0.3),
+    transparent 20%
+    );
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.trend-title{
+  @apply bg-[linear-gradient(#ff7e5f,#feb47b,#ff7e5f)] text-transparent bg-clip-text tracking-wider
+  
+}
+.trend-title::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10%;
+  width: 6px;
+  height: 70%;
+  filter: blur(1px);
+  border-radius: 2px;
+  background: #ff6a00;
+
+  box-shadow:
+    0 0 10px rgba(255, 106, 0, 0.8),
+    0 0 20px rgba(255, 106, 0, 0.6);
+
+}
+
+.addcard-btn:hover{
+  box-shadow: 0 0 7px orange;
+  transition: all 0.3s linear;
+
+}
+
+.bill{
+ box-shadow: 0 0 10px rgba(255, 106, 0, 0.9);
+
+}
+.calculation-btn{
+  @apply w-full cursor-pointer rounded-full flex justify-center font-display h-full p-1.5 text-xl
+}
+
+.food-detailpage{
+  background-image: radial-gradient(circle at 100% 0%, rgb(225, 119, 19,0.2) 2%, transparent 20%),
+  radial-gradient(circle at 0% 100%, rgb(225, 119, 19,0.2) 2%, transparent 20%),
+  radial-gradient(circle at -10% 40%, rgb(225, 119, 19,0.2) 2%, transparent 20%),
+  radial-gradient(circle at 100% 80%, rgb(225, 119, 19,0.2) 2%, transparent 20%);
+}
+
+.backgroundimage{
+  background-image: radial-gradient(
+     at 100% 0%,
+    rgba(219, 99, 34, 0.2),
+    transparent 30%
+    ),
+    radial-gradient(
+     at 0% 110%,
+    rgba(219, 99, 34, 0.2),
+    transparent 30%
+    );
+  background-repeat: no-repeat;
+  background-size: cover;
+}

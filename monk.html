@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #282c34;
+            margin: 0;
+        }
+        #menu li{
+           color: blue;
+           padding: 8px;
+
+        }
+       .ball{
+           width: 40px;
+           height: 40px;
+           background-color: #61dafb;
+           border-radius: 50%;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           position: relative;
+           z-index: 20;
+
+       }
+       .ball-container{
+        display : flex;
+        width: 100vw;
+        height: 100vh;
+        justify-content: center;
+        align-items: center
+        
+       }
+       .lines
+         {
+          position: absolute;
+          width:80px;
+          height: 200px;
+          border: 10px solid #61dafb;
+          border-radius: 50%;
+          z-index: -1;
+          rotate: 90deg;
+        }
+        .lines::before
+        {
+          content: '';
+          position: absolute;
+          width: 80px;
+          height: 200px;
+          border: 10px solid #61dafb;
+          border-radius: 50%;
+          z-index: -1;
+          rotate: 60deg;
+          inset: 0;
+          
+        }
+        .lines::after
+        {
+          content: '';
+          position: absolute;
+            width: 80px;
+            height: 200px;
+            border: 10px solid #61dafb;
+            border-radius: 50%;
+            z-index: -1;
+            rotate: -60deg;
+            inset: 0;
+        }
+        .box-container{
+            display: grid;
+            background-color: rgba(255, 255, 255, 0.2);
+            
+            gap: 10px;
+            padding: 20px;
+        }
+        .box{
+            background-color: #727474;
+            color: black;
+            padding: 20px;
+            text-align: center;
+            font-size: 20px;
+            border-radius: 8px;
+        }
+        .box{
+            translate: -100px;
+            opacity: 0;
+            transition: 1300ms ease;
+        }
+        .box.box-visible{
+            translate: 0;
+            opacity: 1;
+        }
+        .box.hidden-left{
+            translate: -100px;
+        }
+        .box.hidden-right{
+            translate: 100px;
+        }
+    </style>
+
+</head>
+<body >
+    <button popovertarget="menu">menu</button>
+    <div id="menu" popover >
+        <ul>    
+            <li>monk</li>
+            <li>susi</li>
+            <li>kapi</li>
+        </ul>
+    </div>
+    <div class="ball-container">
+        <div class="ball" >
+            <div class="lines"></div>
+        </div>
+    </div>
+    <div class="box-container">
+        <div class="box">dog</div>
+        <div class="box">cat</div>
+        <div class="box">cow</div>
+        <div class="box">arrow</div>
+        <div class="box">dorrow</div>
+        <div class="box">cander</div>
+        <div class="box">monder</div>
+        <div class="box">navber</div>
+        <div class="box">barrow</div>
+        <div class="box">vaooo</div>
+        <div class="box">monnn</div>
+        <div class="box">november</div>
+        <div class="box">canner</div>
+        <div class="box">dogger</div>
+        <div class="box">rogger</div>
+    </div>
+    <script>
+        const boxContainer = document.querySelector('.box-container');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting){
+                    entry.target.classList.add('box-visible');
+                    entry.target.classList.remove('hidden-left', 'hidden-right');
+                } else {
+                    entry.target.classList.remove('box-visible');
+                    if(entry.boundingClientRect.top > 0){
+                        entry.target.classList.add('hidden-left');
+                    } else {
+                        entry.target.classList.add('hidden-right');
+                    }
+                }
+            });
+
+        }, { threshold: 0.1 });
+        boxContainer.querySelectorAll('.box').forEach(box => {
+            observer.observe(box);
+        });
+    </script>
+</body>
+</html>
