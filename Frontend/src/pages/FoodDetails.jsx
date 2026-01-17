@@ -41,7 +41,7 @@ const FoodDetails = () => {
   useEffect(() => {
     const token = localStorage.getItem('token') || sessionStorage.getItem('token');
     if (token) {
-      fetch('http://flavista.onrender.com/api/auth/profile', {
+      fetch('https://flavista.onrender.com/api/auth/profile', {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then(res => res.json())
@@ -55,7 +55,7 @@ const FoodDetails = () => {
       setLoading(true);
       try {
         // 1. Try Fetch from API first (Prioritize Backend Data)
-        const response = await fetch(`http://flavista.onrender.com/api/foods/${id}`);
+        const response = await fetch(`https://flavista.onrender.com/api/foods/${id}`);
 
         if (response.ok) {
           const apiFood = await response.json();
@@ -63,7 +63,7 @@ const FoodDetails = () => {
           // Set default reviews for API items since they don't have real reviews yet
           
           // Fetch Real Reviews from Database
-          fetch(`http://flavista.onrender.com/api/reviews/${apiFood._id || apiFood.id}`)
+          fetch(`https://flavista.onrender.com/api/reviews/${apiFood._id || apiFood.id}`)
             .then(res => res.json())
             .then(data => {
               if (Array.isArray(data) && data.length > 0) {
@@ -128,7 +128,7 @@ const FoodDetails = () => {
     const fetchRelatedFoods = async () => {
       try {
         const category = food.category || food.cuisine;
-        const response = await fetch(`http://flavista.onrender.com/api/foods/category/${category}`);
+        const response = await fetch(`https://flavista.onrender.com/api/foods/category/${category}`);
         
         if (response.ok) {
           const data = await response.json();
@@ -307,7 +307,7 @@ const FoodDetails = () => {
 
     // Persist to Backend
     try {
-      await fetch(`http://flavista.onrender.com/api/reviews/${food._id || food.id}`, {
+      await fetch(`https://flavista.onrender.com/api/reviews/${food._id || food.id}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
         body: JSON.stringify({ 
@@ -410,7 +410,7 @@ const FoodDetails = () => {
                   return (
                     <div key={index} className="relative w-5 h-5">
                       <svg
-                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns="https://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
                         fill="currentColor"
                         className="absolute top-0 left-0 w-full h-full text-gray-600"
@@ -427,7 +427,7 @@ const FoodDetails = () => {
                         style={{ width: `${fillPercentage}%` }}
                       >
                         <svg
-                          xmlns="http://www.w3.org/2000/svg"
+                          xmlns="https://www.w3.org/2000/svg"
                           viewBox="0 0 24 24"
                           fill="currentColor"
                           className="w-5 h-5 text-yellow-400"
@@ -452,7 +452,7 @@ const FoodDetails = () => {
                   {[...Array(3)].map((_, index) => (
                     <svg
                       key={index}
-                      xmlns="http://www.w3.org/2000/svg"
+                      xmlns="https://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
                       fill="currentColor"
                       className={`w-5 h-5 ${
@@ -498,7 +498,7 @@ const FoodDetails = () => {
                     />
                     <div className="w-5 h-5 rounded-lg border border-white/30 bg-transparent peer-checked:bg-orange-600 peer-checked:border-orange-500 peer-checked:[&_svg]:opacity-100   transition-all flex items-center justify-center">
                       <svg
-                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns="https://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
                         fill="currentColor"
                         className="w-3.5 h-3.5 text-white opacity-0 transition-opacity"
@@ -589,7 +589,7 @@ const FoodDetails = () => {
                     {[...Array(5)].map((_, i) => (
                       <svg
                         key={i}
-                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns="https://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
                         fill="currentColor"
                         className={`w-3.5 h-3.5 ${i < review.rating ? "text-yellow-400" : "text-white/20"}`}

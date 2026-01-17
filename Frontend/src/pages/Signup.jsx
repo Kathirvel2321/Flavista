@@ -30,7 +30,7 @@ const Signup = () => {
     }
 
     try {
-      const response = await fetch('http://flavista.onrender.com/api/auth/register', {
+      const response = await fetch('https://flavista.onrender.com/api/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ const Signup = () => {
   };
 
   const handleSocialLogin = (provider) => {
-    window.location.href = `http://flavista.onrender.com/api/auth/${provider}`;
+    window.location.href = `https://flavista.onrender.com/api/auth/${provider}`;
   };
 
   return (

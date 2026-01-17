@@ -11,7 +11,7 @@ const TopRestaurants = () => {
   useEffect(() => {
     const fetchRestaurants = async () => {
       try {
-        const res = await fetch("http://flavista.onrender.com/api/restaurants");
+        const res = await fetch("https://flavista.onrender.com/api/restaurants");
         if (res.ok) {
           const data = await res.json();
           const restaurantList = Array.isArray(data)

@@ -40,7 +40,7 @@ const RestaurantMenu = () => {
 
         // 1️⃣ Fetch restaurant
         const restaurantRes = await fetch(
-          `http://flavista.onrender.com/api/restaurants/${id}`
+          `https://flavista.onrender.com/api/restaurants/${id}`
         );
 
         if (!restaurantRes.ok) throw new Error("Restaurant not found");
@@ -61,7 +61,7 @@ const RestaurantMenu = () => {
 
         // 3️⃣ Fetch foods by category
         const foodRes = await fetch(
-          `http://flavista.onrender.com/api/foods/category/${category}`
+          `https://flavista.onrender.com/api/foods/category/${category}`
         );
 
         let foods = [];
@@ -73,7 +73,7 @@ const RestaurantMenu = () => {
         // 4️⃣ Fallback → Trending
         if (!foods.length) {
           const trendingRes = await fetch(
-            "http://flavista.onrender.com/api/foods/trending"
+            "https://flavista.onrender.com/api/foods/trending"
           );
           const trendingData = await trendingRes.json();
           foods = normalizeArray(trendingData);

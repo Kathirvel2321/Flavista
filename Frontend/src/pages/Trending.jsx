@@ -9,9 +9,9 @@ const Trending = () => {
     useEffect(() => {
         const fetchTrending = async () => {
             try {
-                const res = await fetch('http://flavista.onrender.com/api/foods/trending');
+                const res = await fetch('https://flavista.onrender.com/api/foods/trending');
                 if (!res.ok) {
-                    throw new Error(`HTTP error! Status: ${res.status}`);
+                    throw new Error(`https error! Status: ${res.status}`);
                 }
                 const data = await res.json();
                 setTrendingFoods(data);
