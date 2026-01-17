@@ -18,7 +18,7 @@ const SearchBar = () => {
       }
       
       try {
-        const res = await fetch(`http://localhost:5000/api/foods/suggestions?query=${query}`);
+        const res = await fetch(`https://flavista.onrender.com/api/foods/suggestions?query=${query}`);
         const data = await res.json();
         setSuggestions(data);
       } catch (error) {
@@ -51,7 +51,7 @@ const SearchBar = () => {
     
     // Here we call your existing search API to get/save the food details
     try {
-      const res = await fetch(`http://localhost:5000/api/foods/search?query=${searchQuery}`);
+      const res = await fetch(`https://flavista.onrender.com/api/foods/search?query=${searchQuery}`);
       const data = await res.json();
       if (res.ok) {
         // Navigate to food details page or show modal

@@ -13,9 +13,9 @@ const OrderTracking = () => {
         const userInfo = JSON.parse(localStorage.getItem("userInfo"));
         const token = userInfo?.token;
 
-        const response = await fetch(`http://localhost:5000/api/orders/${id}`, {
+        const response = await fetch(`https://flavista.onrender.com/api/orders/${id}`, {
           headers: {
-            Authorization: `Bearer `,
+            Authorization: `Bearer ${token}`,
           },
         });
 
