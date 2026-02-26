@@ -13,7 +13,8 @@ const handleAuthCallback = (req, res) => {
     expiresIn: '30d',
   });
   // Redirect to frontend login page with token
-  res.redirect(`http://localhost:5173/login?token=${token}`);
+  const clientUrl = process.env.CLIENT_URL || 'http://localhost:5173';
+  res.redirect(`${clientUrl}/login?token=${token}`);
 };
 
 router.post('/register', registerUser);

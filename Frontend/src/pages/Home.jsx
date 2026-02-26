@@ -329,6 +329,7 @@ const Home = () => {
         }
       `}</style>
       <FloatingCartBar />
+      
 
     </div>
   );

@@ -1,0 +1,51 @@
+Project Name: Flavista
+Type: Food Delivery Application (MERN Stack)
+
+Overview:
+Flavista is a full-stack web application designed for ordering food online. It features a modern, responsive user interface with smooth animations and a robust backend for managing orders, users, and restaurant data.
+
+Tech Stack:
+- Frontend: React.js, Tailwind CSS, Framer Motion (Animations), Swiper (Carousels), React Router DOM.
+- Backend: Node.js, Express.js.
+- Database: MongoDB (using Mongoose).
+- Authentication: Passport.js, JWT.
+- Deployment: Render (inferred from API URLs in frontend code).
+
+Key Features:
+
+1. User Interface & Experience:
+   - Dark/Modern aesthetic with glassmorphism effects.
+   - "Chef's Special Selection" carousel on the Home page.
+   - Interactive "Order Tracking" with an animated SVG road map.
+   - Floating Cart Bar for easy checkout access.
+   - Custom animated Loader.
+
+2. Search & Discovery:
+   - Real-time search suggestions.
+   - Categorized food browsing (Explore, Restaurants).
+   - Trending foods display.
+
+3. Order Management:
+   - Cart functionality.
+   - Order history ("My Orders").
+   - Detailed order tracking status (Placed -> Confirmed -> Preparing -> On the Way -> Delivered).
+
+4. Backend Architecture:
+   - RESTful API structure.
+   - Modular routes (auth, foods, restaurants, cart, orders).
+   - Error handling middleware.
+   - Image serving via static uploads.
+
+Project Structure Highlights:
+- /Frontend: React application source code.
+- /backend: Express server, API routes, and controllers.
+
+Resume Summary (Copy-Paste):
+----------------------------
+Flavista | Full Stack Food Delivery Application
+Technologies: MERN Stack, Tailwind CSS, Framer Motion, Swiper.js
+
+- Designed a high-performance UI with a 3D "Coverflow" menu carousel and glassmorphism aesthetics, optimizing Core Web Vitals through image preloading and lazy loading.
+- Engineered a visual Order Tracking system using Framer Motion to animate delivery progress along an SVG path, providing real-time status updates.
+- Implemented a robust search feature with debouncing to minimize API calls and enhance user experience.
+- Architected a secure REST API with Node.js/Express and MongoDB, managing complex data relationships for orders, carts, and restaurants.

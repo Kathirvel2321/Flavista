@@ -19,6 +19,8 @@ import { notFound, errorHandler } from './src/middleware/errorMiddleware.js';
 const app = express();
 
 dotenv.config();
+// Trust the proxy to ensure Google Auth callback uses HTTPS
+app.enable('trust proxy');
 
 app.use(cors());
 app.use(express.json());
