@@ -1,33 +1,43 @@
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Loader from '../components/Loader';
 
 const AuthSuccess = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
-    // Manually parse hash for query params: #/auth-success?token=...
-    const hash = window.location.hash;
-    const queryString = hash.includes('?') ? hash.split('?')[1] : null;
+    // 1. Extract Token from URL
+    // HashRouter puts query params in location.search
+    let token = new URLSearchParams(location.search).get('token');
 
-    if (queryString) {
-      const params = new URLSearchParams(queryString);
-      const token = params.get('token');
+    // Fallback: Manual hash parsing if location.search is empty
+    if (!token) {
+        const hash = window.location.hash;
+        const parts = hash.split('?');
+        if (parts.length > 1) {
+            token = new URLSearchParams(parts[1]).get('token');
+        }
+    }
 
-      if (token) {
-        // 1. Save Token
-        localStorage.setItem('token', token);
-        // 2. Update App State
-        window.dispatchEvent(new Event('userUpdated'));
-        // 3. Redirect Home
-        navigate('/');
-      } else {
-        navigate('/login');
-      }
+    if (token) {
+      // 2. Save Token to BOTH storages to ensure Navbar picks it up
+      localStorage.setItem('token', token);
+      sessionStorage.setItem('token', token);
+      
+      // 3. Dispatch event (in case Navbar is listening globally)
+      window.dispatchEvent(new Event('userUpdated'));
+      
+      // 4. Redirect to Home
+      // Small delay to ensure storage is written before navigation
+      setTimeout(() => {
+          navigate('/');
+      }, 100);
     } else {
+      // No token found, redirect to login
       navigate('/login');
     }
-  }, [navigate]);
+  }, [navigate, location]);
 
   return <Loader />;
 };
