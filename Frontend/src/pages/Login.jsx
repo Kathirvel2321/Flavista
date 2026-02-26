@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { IoMail, IoLockClosed, IoLogoGoogle, IoArrowBack } from "react-icons/io5";
 import Flavistalogo from "../logo/Flavistalogo";
 
 const Login = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -13,13 +14,15 @@ const Login = () => {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
+    // Use location.search to get query params correctly with HashRouter
+    const params = new URLSearchParams(location.search);
     const token = params.get('token');
     if (token) {
       localStorage.setItem('token', token);
+      window.dispatchEvent(new Event('userUpdated')); // Update Navbar state
       navigate('/');
     }
-  }, [navigate]);
+  }, [navigate, location]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -48,6 +51,7 @@ const Login = () => {
           } else {
             sessionStorage.setItem('token', data.token);
           }
+          window.dispatchEvent(new Event('userUpdated')); // Update Navbar state
           navigate('/');
         } else {
           setError(data.message || data.error || 'Invalid email or password');
