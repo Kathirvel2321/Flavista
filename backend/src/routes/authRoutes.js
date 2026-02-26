@@ -14,7 +14,9 @@ const handleAuthCallback = (req, res) => {
   });
   // Redirect to frontend login page with token
   const clientUrl = process.env.CLIENT_URL || 'http://localhost:5173';
-  res.redirect(`${clientUrl}/#/auth-success?token=${token}`);
+  // Ensure no double slashes if clientUrl has trailing slash
+  const baseUrl = clientUrl.endsWith('/') ? clientUrl.slice(0, -1) : clientUrl;
+  res.redirect(`${baseUrl}/#/auth-success?token=${token}`);
 };
 
 router.post('/register', registerUser);
