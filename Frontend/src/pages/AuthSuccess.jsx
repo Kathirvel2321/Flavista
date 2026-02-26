@@ -28,10 +28,11 @@ const AuthSuccess = () => {
       // 3. Dispatch event (in case Navbar is listening globally)
       window.dispatchEvent(new Event('userUpdated'));
       
-      // 4. Redirect to Home
-      // Small delay to ensure storage is written before navigation
+      // 4. FORCE RELOAD to Home
+      // We use window.location.href to force a full page refresh.
+      // This guarantees the Navbar re-mounts and reads the token from localStorage.
       setTimeout(() => {
-          navigate('/');
+          window.location.href = '/'; 
       }, 100);
     } else {
       // No token found, redirect to login
