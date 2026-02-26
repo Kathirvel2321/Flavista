@@ -14,7 +14,7 @@ const handleAuthCallback = (req, res) => {
   });
   // Redirect to frontend login page with token
   const clientUrl = process.env.CLIENT_URL || 'http://localhost:5173';
-  res.redirect(`${clientUrl}/login?token=${token}`);
+  res.redirect(`${clientUrl}/#/login?token=${token}`);
 };
 
 router.post('/register', registerUser);
@@ -37,7 +37,7 @@ router.get('/google/callback', (req, res, next) => {
   passport.authenticate('google', { session: false }, (err, user, info) => {
     if (err || !user) {
       const clientUrl = process.env.CLIENT_URL || 'http://localhost:5173';
-      return res.redirect(`${clientUrl}/login?error=Google Login Failed`);
+      return res.redirect(`${clientUrl}/#/login?error=Google Login Failed`);
     }
     req.user = user;
     handleAuthCallback(req, res);
