@@ -2,7 +2,7 @@ import Home from './pages/Home'
 import Categories from './pages/Categories'
 import Trending from './pages/Trending'
 import Offers from './pages/Offers'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { HashRouter, Routes, Route, HashRouter } from 'react-router-dom'
 import Home1 from './pages/Home1'
 import FoodDetails from './pages/FoodDetails'
 import Cart from './pages/Cart.jsx'
@@ -25,7 +25,7 @@ import ResetPassword from './pages/ResetPassword.jsx'
 const App = () => {
   return (
     <div>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path="/" element={<>
           <Home /> 
@@ -63,7 +63,7 @@ const App = () => {
         
          
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
       
     </div>
   )
