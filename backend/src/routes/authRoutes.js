@@ -33,11 +33,16 @@ router.delete('/profile', protect, deleteUserProfile);
 
 router.get('/google',passport.authenticate('google', { scope: ['profile', 'email'] }));
 
-router.get('/google/callback', passport.authenticate('google', { session: false, failureRedirect: '/login' }),
-
-
-  handleAuthCallback
-);
+router.get('/google/callback', (req, res, next) => {
+  passport.authenticate('google', { session: false }, (err, user, info) => {
+    if (err || !user) {
+      const clientUrl = process.env.CLIENT_URL || 'http://localhost:5173';
+      return res.redirect(`${clientUrl}/login?error=Google Login Failed`);
+    }
+    req.user = user;
+    handleAuthCallback(req, res);
+  })(req, res, next);
+});
 
 router.get('/logout', (req, res) => {
   req.logout();
