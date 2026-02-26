@@ -14,6 +14,7 @@ import RestaurantMenu from './pages/RestaurantMenu.jsx'
 import Footer from './pages/Footer.jsx'
 import Login from './pages/Login.jsx'
 import Signup from './pages/Signup.jsx'
+import AuthSuccess from './pages/AuthSuccess.jsx'
 import Profile from './pages/Profile.jsx'
 import Settings from './pages/Settings.jsx'
 import MyOrders from './pages/MyOrders.jsx'
@@ -52,6 +53,7 @@ const App = () => {
         <Route path='/restaurant/:id' element={<RestaurantMenu />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
+        <Route path='/auth-success' element={<AuthSuccess />} />
         <Route path='/profile' element={<Profile />} />
         <Route path='/settings' element={<Settings />} />
         <Route path='/myorders' element={<MyOrders />} />

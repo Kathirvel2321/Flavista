@@ -158,7 +158,7 @@ const Checkout = () => {
   // Play sound effect when success screen mounts
   useEffect(() => {
     if (isSuccess) {
-      const audio = new Audio('httpss://assets.mixkit.co/active_storage/sfx/2000/2000-preview.mp3'); // Premium chime
+      const audio = new Audio('https://assets.mixkit.co/active_storage/sfx/2000/2000-preview.mp3'); // Premium chime
       audio.volume = 0.6;
       audio.play().catch(e => console.log("Audio play failed", e));
     }

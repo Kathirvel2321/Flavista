@@ -14,15 +14,20 @@ const Login = () => {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    // Use location.search to get query params correctly with HashRouter
-    const params = new URLSearchParams(location.search);
-    const token = params.get('token');
-    if (token) {
-      localStorage.setItem('token', token);
-      window.dispatchEvent(new Event('userUpdated')); // Update Navbar state
-      navigate('/');
+    // Manually parse hash for query params because HashRouter puts them inside window.location.hash
+    const hash = window.location.hash; // e.g. "#/login?token=..."
+    const queryString = hash.includes('?') ? hash.split('?')[1] : null;
+
+    if (queryString) {
+      const params = new URLSearchParams(queryString);
+      const token = params.get('token');
+      if (token) {
+        localStorage.setItem('token', token);
+        window.dispatchEvent(new Event('userUpdated')); // Update Navbar state
+        navigate('/');
+      }
     }
-  }, [navigate, location]);
+  }, [navigate]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
