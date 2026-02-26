@@ -21,20 +21,13 @@ const AuthSuccess = () => {
     }
 
     if (token) {
-      // 2. Save Token to BOTH storages to ensure Navbar picks it up
-      localStorage.setItem('token', token);
-      sessionStorage.setItem('token', token);
-      
-      // 3. Dispatch event (in case Navbar is listening globally)
-      window.dispatchEvent(new Event('userUpdated'));
-      
-      // 4. FORCE RELOAD to Home
-      // We use window.location.href to force a full page refresh.
-      // This guarantees the Navbar re-mounts and reads the token from localStorage.
-      setTimeout(() => {
-          window.location.href = '/'; 
-      }, 100);
-    } else {
+  localStorage.setItem('token', token);
+  sessionStorage.setItem('token', token);
+
+  window.dispatchEvent(new Event('userUpdated'));
+
+  navigate('/', { replace: true });
+} else {
       // No token found, redirect to login
       navigate('/login');
     }
