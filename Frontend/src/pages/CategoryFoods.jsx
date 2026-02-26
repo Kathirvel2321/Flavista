@@ -90,7 +90,7 @@ const CategoryFoods = () => {
                   {/* Image Container */}
                   <div className="h-64 rounded-2xl overflow-hidden mb-5 relative">
                     <img
-                      src={item.customImage || item.image || "httpss://via.placeholder.com/400x300?text=No+Image"}
+                      src={item.customImage || item.image || "https://via.placeholder.com/400x300?text=No+Image"}
                       alt={item.name}
                       loading="lazy"
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"

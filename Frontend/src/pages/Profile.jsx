@@ -98,7 +98,7 @@ const Profile = () => {
 
   // Helper to resolve image URL (Google vs Local)
   const getImageUrl = (path) => {
-    if (!path) return "httpss://via.placeholder.com/150";
+    if (!path) return "https://via.placeholder.com/150";
     return path.startsWith('https') ? path : `https://flavista.onrender.com/api/images/${path}`;
   };
 
