@@ -1,3 +1,5 @@
+import Food from '../models/foodModel.js';
+
 const chat = async (req, res) => {
   try {
     const { prompt } = req.body;
@@ -12,8 +14,31 @@ const chat = async (req, res) => {
 
     // 2. Smart Response Logic (The "Brain")
     
+    // --- TASK 1: BUDGET LOGIC ---
+    // Regex to capture "under 200", "below 500", "cheaper than 150"
+    // Handles optional currency symbols like ₹ or Rs.
+    const budgetMatch = lowerPrompt.match(/(?:under|below|cheaper than)\s*(?:₹|rs\.?)?\s*(\d+)/);
+
+    if (budgetMatch) {
+      const budget = parseInt(budgetMatch[1]);
+
+      // Edge Case: Budget too low
+      if (budget < 50) {
+        responseText = `₹${budget} is a bit low! Our delicious items start around ₹50.`;
+      } else {
+        // Query Database: Find items with price <= budget
+        const foods = await Food.find({ price: { $lte: budget } }).limit(3).select('name price');
+        
+        if (foods.length > 0) {
+          const foodList = foods.map(f => `${f.name} (₹${f.price})`).join(", ");
+          responseText = `Here are some wallet-friendly options under ₹${budget}: ${foodList}.`;
+        } else {
+          responseText = `I couldn't find anything under ₹${budget}. Try increasing your budget a bit!`;
+        }
+      }
+    }
     // Greetings & Politeness
-    if (['hi', 'hello', 'hey', 'greetings', 'yo'].some(w => lowerPrompt.startsWith(w))) {
+    else if (['hi', 'hello', 'hey', 'greetings', 'yo'].some(w => lowerPrompt.startsWith(w))) {
       responseText = "Hello! Welcome to Flavista. I'm here to help you find the most delicious food in town. What are you craving?";
     }
     else if (lowerPrompt.includes('how are you')) {

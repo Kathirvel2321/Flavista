@@ -1,0 +1,82 @@
+FLAVISTA MASTER INTERVIEW GUIDE
+===============================
+
+PART 1: BACKEND & ARCHITECTURE (Technical)
+------------------------------------------
+
+Q1: Can you explain the architecture of your backend?
+A: I followed a modular MVC-style structure (Model-View-Controller).
+   - **Server.js:** The entry point where I initialize Express, connect to MongoDB, and register middleware like CORS and Passport.
+   - **Routes:** I separated routes by feature (e.g., `aiRoutes.js`, `foodRoutes.js`) to keep the code clean.
+   - **Controllers:** The logic lives here. For example, my `aiController.js` handles the chat logic so the route file remains simple.
+   - **Middleware:** I use centralized error handling (`errorMiddleware.js`) to catch crashes and send clean JSON responses to the frontend.
+
+Q2: How did you implement the "Order Tracking" feature?
+A: The order tracking is a visual representation of the order's status stored in the database.
+   - **Backend:** The order model has a `status` field (Processing, Preparing, On the way, Delivered).
+   - **Frontend:** I mapped these statuses to a steps array. I calculate the progress percentage based on the current status index.
+   - **Animation:** I used **Framer Motion** to animate an SVG path (`pathLength`). As the status progresses, the line draws itself further along the road map, giving the user real-time visual feedback on their delivery.
+
+Q3: How do you handle database connections?
+A: I use Mongoose to connect to MongoDB. I wrap the connection logic in `server.js` inside a promise. I also use `dotenv` to load the `MONGO_URI` from an environment variable file, ensuring my database credentials are never hardcoded in the source code (security best practice).
+
+
+PART 2: FRONTEND & REACT HOOKS (Technical)
+------------------------------------------
+
+Q4: Which React Hooks did you use in this project and why?
+A:
+   1. **useState:** Used everywhere for local state, like managing the `query` in the search bar or the active slide index in the carousel.
+   2. **useEffect:** Used for side effects. For example, in `Home.jsx`, I use it to fetch "Trending Foods" when the component mounts.
+   3. **useRef:**
+      - In `SearchBar.jsx`, I use `wrapperRef` to detect clicks outside the search dropdown to close it.
+   4. **useNavigate:** From `react-router-dom` to programmatically redirect users (e.g., clicking a food item navigates to `/food/:id`).
+   5. **Custom Hooks/Context:** I used the `useCart` hook (from my CartContext) to manage global cart state. This allows me to access cart data and functions like `addToCart` from any component (Navbar, FoodDetails, etc.) without prop drilling.
+
+Q5: Your search bar updates as I type. How did you optimize this to prevent server overload?
+A: I implemented **Debouncing**.
+   - In `Home.jsx`, inside a `useEffect`, I set a timer (`setTimeout`) for 300ms whenever the `query` changes.
+   - If the user types another character before 300ms, the cleanup function (`return () => clearTimeout(...)`) cancels the previous timer.
+   - The API call only fires once the user *stops* typing for 300ms. This drastically reduces the number of HTTP requests.
+
+Q6: How did you manage the complexity of the UI? It looks very modern.
+A:
+   1. **Component Composition:** I broke the UI into small, reusable pieces like `Navbar`, `FloatingCartBar`, and `Loader`. This keeps `Home.jsx` readable.
+   2. **Tailwind CSS:** I used utility classes (e.g., `bg-black/30 backdrop-blur-xl`) to handle complex styling like Glassmorphism directly in the markup, avoiding massive external CSS files.
+   3. **Libraries for Heavy Lifting:**
+      - **Framer Motion:** For complex animations (like the road map in `OrderTracking.jsx`).
+      - **Swiper.js:** For the 3D "Coverflow" carousel, which would have been very difficult to build from scratch.
+
+
+PART 3: HR & BEHAVIORAL (The "Soft" Skills)
+-------------------------------------------
+
+Q7: What was the most challenging bug you faced?
+A: *Scenario:* "I had an issue with the 'Trending Foods' carousel where images would flicker or load slowly, ruining the user experience."
+   *Solution:* "I implemented a preloading strategy. In `Home.jsx`, I used a `<link rel='preload'>` tag for the active slide's image. I also used the `Swiper` library's lazy loading features to only load off-screen images when needed, significantly improving the Largest Contentful Paint (LCP) metric."
+
+Q8: Why should we hire you?
+A: "I don't just write code; I build products with user experience in mind. In Flavista, I didn't just put a list of foods; I added a 'Trending' section for social proof, a visual Order Tracker to reduce anxiety while waiting, and a seamless checkout experience. I understand both the technical implementation (MERN stack) and the business value of these features."
+
+Q9: How do you handle "Spaghetti Code" or complex logic?
+A: "I prioritize separation of concerns. For example, I moved all cart manipulation logic (add, remove, calculate total) into a dedicated `CartContext`. This keeps my UI components clean and focused only on rendering. In the backend, I strictly follow the Controller-Service-Route pattern to ensure logic isn't mixed with routing definitions."
+
+
+PART 4: SPECIFIC CODE EXPLANATIONS (Deep Dive)
+----------------------------------------------
+
+Q10: Explain this code block in `OrderTracking.jsx`:
+     `animate={{ pathLength: Math.max(0, currentStepIndex / (steps.length - 1)) }}`
+A: This is using **Framer Motion** to animate an SVG path.
+   - `pathLength` is a property that controls how much of the line is drawn (0 to 1).
+   - I calculate the progress based on the order status (`currentStepIndex`).
+   - If we are on step 2 of 5, the path draws 40% of the way. This creates a smooth "progress bar" effect along the winding road map.
+
+Q11: Why did you use `link rel="preload"` in `Home.jsx`?
+A: `<link rel="preload" as="image" ... />` tells the browser to download the hero image immediately, even before it parses the rest of the page. This prevents the "flash of unstyled content" or the background flickering when the user first loads the site, improving the Core Web Vitals (LCP).
+
+```
+
+<!--
+[PROMPT_SUGGESTION]Can you create a mock coding challenge based on the Flavista project?[/PROMPT_SUGGESTION]
+[PROMPT_SUGGESTION]How would I explain the authentication flow (Passport/JWT) if asked?[/PROMPT_SUGGESTION]
