@@ -100,7 +100,7 @@ const Login = () => {
               </div>
               <p className="italic text-white/80 mb-4">"The best food delivery app I've ever used. The UI is stunning and the service is incredibly fast!"</p>
               <div className="flex items-center gap-3">
-                <img src="httpss://randomuser.me/api/portraits/women/44.jpg" alt="User" className="w-10 h-10 rounded-full border-2 border-orange-500" />
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User" className="w-10 h-10 rounded-full border-2 border-orange-500" />
                 <div>
                   <p className="font-bold text-sm">Sarah Jenkins</p>
                   <p className="text-xs text-white/50">Food Blogger</p>
