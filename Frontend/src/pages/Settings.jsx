@@ -16,7 +16,7 @@ const Settings = () => {
 
   useEffect(() => {
     const fetchSettings = async () => {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem('token') || sessionStorage.getItem('token');
       if (!token) return navigate('/login');
 
       try {
@@ -44,7 +44,7 @@ const Settings = () => {
       return;
     }
 
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token') || sessionStorage.getItem('token');
     const body = { preferences };
     if (password) body.password = password;
 
@@ -69,7 +69,7 @@ const Settings = () => {
   };
 
   const handleDeleteAccount = async () => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token') || sessionStorage.getItem('token');
     try {
       const res = await fetch('https://flavista.onrender.com/api/auth/profile', {
         method: 'DELETE',
@@ -77,6 +77,7 @@ const Settings = () => {
       });
       if (res.ok) {
         localStorage.removeItem('token');
+        sessionStorage.removeItem('token');
         window.dispatchEvent(new Event('userUpdated')); // Update Navbar
         navigate('/login');
       }

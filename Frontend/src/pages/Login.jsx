@@ -14,20 +14,27 @@ const Login = () => {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    // Manually parse hash for query params because HashRouter puts them inside window.location.hash
-    const hash = window.location.hash; // e.g. "#/login?token=..."
-    const queryString = hash.includes('?') ? hash.split('?')[1] : null;
+    const params = new URLSearchParams(location.search);
+    let token = params.get('token');
+    const oauthError = params.get('error');
 
-    if (queryString) {
-      const params = new URLSearchParams(queryString);
-      const token = params.get('token');
-      if (token) {
-        localStorage.setItem('token', token);
-        window.dispatchEvent(new Event('userUpdated')); // Update Navbar state
-        navigate('/');
-      }
+    // Backward compatibility for old hash URLs.
+    if (!token && window.location.hash.includes('?')) {
+      const hashQueryString = window.location.hash.split('?')[1];
+      token = new URLSearchParams(hashQueryString).get('token');
     }
-  }, [navigate]);
+
+    if (token) {
+      localStorage.setItem('token', token);
+      window.dispatchEvent(new Event('userUpdated')); // Update Navbar state
+      navigate('/');
+      return;
+    }
+
+    if (oauthError) {
+      setError(oauthError);
+    }
+  }, [navigate, location.search]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
