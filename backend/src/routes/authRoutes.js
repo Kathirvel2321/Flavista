@@ -28,7 +28,8 @@ const handleAuthCallback = (req, res) => {
     expiresIn: '30d',
   });
   const baseUrl = getClientBaseUrl();
-  res.redirect(`${baseUrl}/auth-success?token=${encodeURIComponent(token)}`);
+  // Redirect to root with query param so it works even if SPA route rewrites are missing.
+  res.redirect(`${baseUrl}/?token=${encodeURIComponent(token)}`);
 };
 
 router.post('/register', registerUser);
@@ -51,7 +52,7 @@ router.get('/google/callback', (req, res, next) => {
   passport.authenticate('google', { session: false }, (err, user, info) => {
     if (err || !user) {
       const baseUrl = getClientBaseUrl();
-      return res.redirect(`${baseUrl}/login?error=${encodeURIComponent('Google Login Failed')}`);
+      return res.redirect(`${baseUrl}/?error=${encodeURIComponent('Google Login Failed')}`);
     }
     req.user = user;
     handleAuthCallback(req, res);
