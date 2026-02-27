@@ -1,37 +1,33 @@
 import React, { useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Loader from '../components/Loader';
 
 const AuthSuccess = () => {
   const navigate = useNavigate();
-  const location = useLocation();
 
   useEffect(() => {
-    // 1. Extract Token from URL
-    // HashRouter puts query params in location.search
-    let token = new URLSearchParams(location.search).get('token');
+    // BrowserRouter: "/auth-success?token=..."
+    let token = new URLSearchParams(window.location.search).get('token');
 
-    // Fallback: Manual hash parsing if location.search is empty
-    if (!token) {
-        const hash = window.location.hash;
-        const parts = hash.split('?');
-        if (parts.length > 1) {
-            token = new URLSearchParams(parts[1]).get('token');
-        }
+    // Backward compatibility for old hash URLs.
+    const hash = window.location.hash || '';
+    if (!token && hash.includes('?')) {
+      const queryString = hash.split('?')[1];
+      token = new URLSearchParams(queryString).get('token');
     }
 
     if (token) {
-  localStorage.setItem('token', token);
-  sessionStorage.setItem('token', token);
+      localStorage.setItem('token', token);
+      sessionStorage.setItem('token', token);
 
-  window.dispatchEvent(new Event('userUpdated'));
+      window.dispatchEvent(new Event('userUpdated'));
 
-  navigate('/', { replace: true });
-} else {
+      window.location.replace('/');
+    } else {
       // No token found, redirect to login
       navigate('/login');
     }
-  }, [navigate, location]);
+  }, [navigate]);
 
   return <Loader />;
 };

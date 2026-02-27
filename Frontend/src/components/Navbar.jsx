@@ -15,41 +15,55 @@ const Navbar = () => {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
+  const [profileFetchFailed, setProfileFetchFailed] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
 
-  const fetchUserData = () => {
-    const token = localStorage.getItem('token');
+  const fetchUserData = async () => {
+    const token = localStorage.getItem('token') || sessionStorage.getItem('token');
     if (token) {
-      fetch('https://flavista.onrender.com/api/auth/profile', {
-        method: 'GET',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        },
-      })
-        .then(response => response.json())
-        .then(data => {
-          if(data && data.email){
-            setIsLoggedIn(true);
-            setUser(data);
-          } else {
-            localStorage.removeItem('token');
-            setIsLoggedIn(false);
-            setUser(null);
-          }
-
-        })
-        .catch(error => {
-          console.error('Error fetching user data:', error);
-          localStorage.removeItem('token');
-          setIsLoggedIn(false);
-          setUser(null);
+      // Keep user as logged in while validating token to avoid logout on transient API failures.
+      setIsLoggedIn(true);
+      setProfileFetchFailed(false);
+      try {
+        const response = await fetch('https://flavista.onrender.com/api/auth/profile', {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          },
         });
-        } else {
+
+        if (response.status === 401) {
+          localStorage.removeItem('token');
+          sessionStorage.removeItem('token');
           setIsLoggedIn(false);
           setUser(null);
+          return;
         }
+
+        if (!response.ok) {
+          setProfileFetchFailed(true);
+          return;
+        }
+
+        const data = await response.json();
+        if (data && data.email) {
+          setIsLoggedIn(true);
+          setUser(data);
+        } else {
+          setProfileFetchFailed(true);
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+        // Network/render cold-start issue: keep existing token and retry later.
+        setProfileFetchFailed(true);
+      }
+    } else {
+      setIsLoggedIn(false);
+      setUser(null);
+      setProfileFetchFailed(false);
+    }
   };
 
   useEffect(() => {
@@ -63,8 +77,15 @@ const Navbar = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (!profileFetchFailed) return;
+    const timer = setTimeout(() => fetchUserData(), 2500);
+    return () => clearTimeout(timer);
+  }, [profileFetchFailed]);
+
   const handleLogout = () => {
     localStorage.removeItem('token');
+    sessionStorage.removeItem('token');
     setIsLoggedIn(false);
     setUser(null);
     setUserMenuOpen(false);

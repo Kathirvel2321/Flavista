@@ -16,7 +16,7 @@ const Profile = () => {
 
   useEffect(() => {
     const fetchProfile = async () => {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem('token') || sessionStorage.getItem('token');
       if (!token) return navigate('/login');
 
       try {
@@ -69,7 +69,7 @@ const Profile = () => {
   };
 
   const updateProfile = async (userData) => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token') || sessionStorage.getItem('token');
     try {
       const res = await fetch('https://flavista.onrender.com/api/auth/profile', {
         method: 'PUT',
