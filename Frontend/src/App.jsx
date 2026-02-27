@@ -2,7 +2,8 @@ import Home from './pages/Home'
 import Categories from './pages/Categories'
 import Trending from './pages/Trending'
 import Offers from './pages/Offers'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useLocation, useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
 import Home1 from './pages/Home1'
 import FoodDetails from './pages/FoodDetails'
 import Cart from './pages/Cart.jsx'
@@ -23,10 +24,36 @@ import LazyLoadSection from './LazyLoadSection.jsx'
 import ForgotPassword from './pages/ForgotPassword.jsx'
 import ResetPassword from './pages/ResetPassword.jsx'
 
+const AuthQueryHandler = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const token = params.get('token');
+    const error = params.get('error');
+
+    if (token) {
+      localStorage.setItem('token', token);
+      sessionStorage.setItem('token', token);
+      window.dispatchEvent(new Event('userUpdated'));
+      navigate(location.pathname, { replace: true });
+      return;
+    }
+
+    if (error) {
+      navigate(`/login?error=${encodeURIComponent(error)}`, { replace: true });
+    }
+  }, [location.pathname, location.search, navigate]);
+
+  return null;
+};
+
 const App = () => {
   return (
     <div>
       <BrowserRouter>
+        <AuthQueryHandler />
         <Routes>
           <Route path="/" element={<>
           <Home /> 
