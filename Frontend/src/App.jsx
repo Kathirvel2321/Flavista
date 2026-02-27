@@ -37,7 +37,8 @@ const AuthQueryHandler = () => {
       localStorage.setItem('token', token);
       sessionStorage.setItem('token', token);
       window.dispatchEvent(new Event('userUpdated'));
-      navigate(location.pathname, { replace: true });
+      // Force clean URL and full app re-init after OAuth token capture.
+      window.location.replace('/');
       return;
     }
 
